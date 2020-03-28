@@ -1,0 +1,19 @@
+{
+  "name": "line_bot_without_sdk",
+  "version": "1.0.0",
+  "description": "This linebot is without SDK",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NovitaGuok/line-bot-without-sdk.git"
+  },
+  "author": "novitaguok",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NovitaGuok/line-bot-without-sdk/issues"
+  },
+  "homepage": "https://github.com/NovitaGuok/line-bot-without-sdk#readme"
+}

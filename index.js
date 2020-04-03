@@ -5,12 +5,12 @@ var linebot = require('linebot');
 var express = require('express');
 const app = express();
 
-const followEventProcessor = require('./event-processors/follow');
-const invalidEventProcessor = require('./event-processors/invalid');
-const joinEventProcessor = require('./event-processors/join');
-const leaveEventProcessor = require('./event-processors/leave');
-const messageEventProcessor = require('./event-processors/message');
-const unfollowEventProcessor = require('./event-processors/unfollow');
+// const followEventProcessor = require('./event-processors/follow');
+// const invalidEventProcessor = require('./event-processors/invalid');
+// const joinEventProcessor = require('./event-processors/join');
+// const leaveEventProcessor = require('./event-processors/leave');
+// const messageEventProcessor = require('./event-processors/message');
+// const unfollowEventProcessor = require('./event-processors/unfollow');
 
 var bot = linebot({
     channelId: 'Ufe47177397de6d3401d5844c22d90d57',

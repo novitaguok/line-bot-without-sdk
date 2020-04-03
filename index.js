@@ -24,7 +24,7 @@ bot.on('message', function(event) {
     if (event.message.type == 'text') {
         var msg = event.message.text;
         event.reply(msg).then(function(data) {
-            console.log(msg);
+            console.log('Test hook received: ' + JSON.stringify(event.message));
         }).catch(function(error) {
             console.log(error);
         });

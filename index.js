@@ -21,7 +21,7 @@ var bot = linebot({
 let baseURL = 'https://line-bot-without-sdk.herokuapp.com/';
 
 bot.on('message', function(event) {
-    if (event.message.type == 'text') {
+    if (event.message.type = 'text') {
         var msg = event.message.text;
         event.reply(msg).then(function(data) {
             console.log('Test hook received: ' + JSON.stringify(event.message));

@@ -1,6 +1,9 @@
 const Bluebird = require('bluebird');
 const crypto = require('crypto');
 const request = require('request-promise');
+var linebot = require('linebot');
+var express = require('express');
+cosnt app = express();
 
 const followEventProcessor = require('./event-processors/follow');
 const invalidEventProcessor = require('./event-processors/invalid');
@@ -8,6 +11,31 @@ const joinEventProcessor = require('./event-processors/join');
 const leaveEventProcessor = require('./event-processors/leave');
 const messageEventProcessor = require('./event-processors/message');
 const unfollowEventProcessor = require('./event-processors/unfollow');
+
+var bot = linebot({
+    channelAccessToken: process.env.LINE_CHANNEL_ACCESS_TOKEN,
+    channelSecret: process.env.LINE_CHANNEL_SECRET
+})
+
+bot.on('message', function(event) {
+    if (event.message.type == 'text') {
+        var msg = event.message.text;
+        event.reply(msg).then(function(data) {
+            console.log(msg);
+        }).catch(function(error) {
+            console.log(error);
+        });
+    }
+});
+
+const linebotParser = bot.parser();
+
+app.post('/', linebotParser);
+
+var server = app.listen(process.env.PORT || 8080, function() {
+    var port = server.address().port;
+    console.log('Running on port ' + port);
+})
 
 const MAX_CONCURRENCY = 10;
 
@@ -95,7 +123,9 @@ module.exports = (req, res) => {
         const text = JSON.stringify(req.body);
         // const hmac = crypto.createHmac('SHA256', process.env.LINE_CHANNEL_SECRET).update(text).digest('raw');
         // const signature = Buffer.from(hmac).toString('base64');
-        const signature = crypto.createHmac('SHA256', process.env.LINE_CHANNEL_SECRET).update(text).digest('base64').toString();
+        const signature = crypto
+            .createHmac('SHA256', process.env.LINE_CHANNEL_SECRET)
+            .update(text).digest('base64').toString();
 
         if (signature !== req.headers['x-line-signature']) {
             return res.status(401).send('Unauthorized');

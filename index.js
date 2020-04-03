@@ -13,7 +13,7 @@ const app = express();
 // const unfollowEventProcessor = require('./event-processors/unfollow');
 
 var bot = linebot({
-    channelId: 'Ufe47177397de6d3401d5844c22d90d57',
+    channelId: '1654001782',
     channelAccessToken: process.env.LINE_CHANNEL_ACCESS_TOKEN,
     channelSecret: process.env.LINE_CHANNEL_SECRET
 })

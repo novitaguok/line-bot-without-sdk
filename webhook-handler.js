@@ -3,7 +3,7 @@ const crypto = require('crypto');
 const request = require('request-promise');
 var linebot = require('linebot');
 var express = require('express');
-cosnt app = express();
+const app = express();
 
 const followEventProcessor = require('./event-processors/follow');
 const invalidEventProcessor = require('./event-processors/invalid');

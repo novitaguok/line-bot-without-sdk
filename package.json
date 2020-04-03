@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/NovitaGuok/line-bot-without-sdk/issues"
   },
-  "homepage": "https://github.com/NovitaGuok/line-bot-without-sdk#readme"
+  "homepage": "https://github.com/NovitaGuok/line-bot-without-sdk#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "linebot": "^1.5.3"
+  }
 }

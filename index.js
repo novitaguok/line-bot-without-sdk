@@ -1,6 +1,6 @@
-const Bluebird = require('bluebird');
-const crypto = require('crypto');
-const request = require('request-promise');
+// const Bluebird = require('bluebird');
+// const crypto = require('crypto');
+// const request = require('request-promise');
 var linebot = require('linebot');
 var express = require('express');
 const app = express();

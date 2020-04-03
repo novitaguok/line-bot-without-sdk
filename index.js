@@ -13,9 +13,12 @@ const messageEventProcessor = require('./event-processors/message');
 const unfollowEventProcessor = require('./event-processors/unfollow');
 
 var bot = linebot({
+    channelId: 'Ufe47177397de6d3401d5844c22d90d57',
     channelAccessToken: process.env.LINE_CHANNEL_ACCESS_TOKEN,
     channelSecret: process.env.LINE_CHANNEL_SECRET
 })
+
+let baseURL = 'https://line-bot-without-sdk.herokuapp.com/';
 
 bot.on('message', function(event) {
     if (event.message.type == 'text') {

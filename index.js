@@ -12,30 +12,33 @@ var express = require('express');
 // const unfollowEventProcessor = require('./event-processors/unfollow');
 
 var bot = linebot({
-    channelId: '1654001782',
-    channelAccessToken: process.env.LINE_CHANNEL_ACCESS_TOKEN,
-    channelSecret: process.env.LINE_CHANNEL_SECRET
+  channelId: '1654001782',
+  channelAccessToken: process.env.LINE_CHANNEL_ACCESS_TOKEN,
+  channelSecret: process.env.LINE_CHANNEL_SECRET,
 });
 
-bot.on('message', function(event) {
-    if (event.message.type = 'text') {
-        var msg = event.message.text;
-        event.reply(msg).then(function(data) {
-            console.log(msg);
-            // console.log('Destination User ID: ' + req.body.destination);
-        }).catch(function(error) {
-            console.log(error);
-        });
-    }
+bot.on('message', function (event) {
+  if ((event.message.type = 'text')) {
+    var msg = event.message.text;
+    event
+      .reply(msg)
+      .then(function (data) {
+        console.log(msg);
+        // console.log('Destination User ID: ' + req.body.destination);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
 });
 
 const app = express();
 const linebotParser = bot.parser();
 app.post('/', linebotParser);
 
-var server = app.listen(process.env.PORT || 8080, function() {
-    var port = server.address().port;
-    console.log('Running on port ' + port);
+var server = app.listen(process.env.PORT || 8080, function () {
+  var port = server.address().port;
+  console.log('Running on port ' + port);
 });
 
 const MAX_CONCURRENCY = 10;
@@ -105,7 +108,7 @@ const MAX_CONCURRENCY = 10;
 
 //         return request(requestOptions)
 //         .then((response) => {
-//             if(response.statusCode = 200) {
+//             if(response.statusCode === 200) {
 //                 console.log('Reply sent successfully');
 //             } else {
 //                 console.log(`Error sending reply to LINE server with status ${response.statusCode}:\n ${response.body}`);
